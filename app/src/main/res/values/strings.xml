@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SonataMusic</string>
+    <string-array name="channel_options">
+        <item>STREAM_MUSIC</item>
+        <item>STREAM_SYSTEM</item>
+        <item>STREAM_VOICE_CALL</item>
+        <item>STREAM_RING</item>
+        <item>STREAM_ALARM</item>
+        <item>STREAM_NOTIFICATION</item>
+    </string-array>
+    <string name="custom_url_hint">输入自定义URL</string>
+    <string name="go_button_text">GO</string>
+</resources>

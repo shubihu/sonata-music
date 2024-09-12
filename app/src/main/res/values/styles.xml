@@ -1,0 +1,9 @@
+<resources>
+    <!-- 基础应用主题 -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 使用具体的颜色值 -->
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorPrimaryDark">#303F9F</item>
+        <item name="colorAccent">#0085ff</item>
+    </style>
+</resources>
