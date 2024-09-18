@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 currentStreamType = getStreamTypeFromSelection(parent.getItemAtPosition(position).toString());
                 setAudioStream(currentStreamType);
+                addLog("当前声道音量: " + audioManager.getStreamVolume(currentStreamType)); // 打印当前声道音量
             }
 
             @Override
@@ -244,6 +245,8 @@ public class MainActivity extends AppCompatActivity {
             direction > 0 ? AudioManager.ADJUST_RAISE : AudioManager.ADJUST_LOWER,
             AudioManager.FLAG_SHOW_UI
         );
+        int currentVolume = audioManager.getStreamVolume(currentStreamType); // 获取调节后的音量
+        addLog("调节后的音量: " + currentVolume); // 打印调节后的音量
     }
 
     private void setAudioStream(int streamType) {
@@ -253,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer.reset();
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
                 .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .setUsage(getUsageFromStreamType(streamType))
+                .setUsage(streamType == AudioManager.STREAM_MUSIC ? AudioAttributes.USAGE_ASSISTANCE_NAVIGATION_GUIDANCE : getUsageFromStreamType(streamType))
                 .build();
             mediaPlayer.setAudioAttributes(audioAttributes);
             try {
@@ -275,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
             case "STREAM_RING": return AudioManager.STREAM_RING;
             case "STREAM_ALARM": return AudioManager.STREAM_ALARM;
             case "STREAM_NOTIFICATION": return AudioManager.STREAM_NOTIFICATION;
+            case "STREAM_DTMF": return AudioManager.STREAM_DTMF;
             default: return AudioManager.STREAM_MUSIC;
         }
     }
@@ -287,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
             case AudioManager.STREAM_RING: return AudioAttributes.USAGE_NOTIFICATION_RINGTONE;
             case AudioManager.STREAM_ALARM: return AudioAttributes.USAGE_ALARM;
             case AudioManager.STREAM_NOTIFICATION: return AudioAttributes.USAGE_NOTIFICATION;
+            case AudioManager.STREAM_DTMF: return AudioAttributes.USAGE_VOICE_COMMUNICATION_SIGNALLING;
             default: return AudioAttributes.USAGE_MEDIA;
         }
     }
@@ -299,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
             case AudioManager.STREAM_RING: return "STREAM_RING";
             case AudioManager.STREAM_ALARM: return "STREAM_ALARM";
             case AudioManager.STREAM_NOTIFICATION: return "STREAM_NOTIFICATION";
+            case AudioManager.STREAM_DTMF: return "STREAM_DTMF";
             default: return "UNKNOWN_STREAM_TYPE";
         }
     }

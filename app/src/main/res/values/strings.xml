@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">SonataMusic</string>
     <string-array name="channel_options">
-        <item>STREAM_MUSIC</item>
-        <item>STREAM_SYSTEM</item>
-        <item>STREAM_VOICE_CALL</item>
-        <item>STREAM_RING</item>
-        <item>STREAM_ALARM</item>
-        <item>STREAM_NOTIFICATION</item>
+        <item>STREAM_MUSIC</item> <!-- 音乐 -->
+        <item>STREAM_VOICE_CALL</item> <!-- 电话 -->
+        <item>STREAM_SYSTEM</item> <!-- 系统 -->
+        <item>STREAM_RING</item> <!-- 铃声 -->
+        <item>STREAM_ALARM</item> <!-- 闹钟 -->
+        <item>STREAM_NOTIFICATION</item> <!-- 通知 -->
+        <item>STREAM_DTMF</item> <!-- 双音多频 -->
     </string-array>
     <string name="custom_url_hint">输入自定义URL</string>
     <string name="go_button_text">GO</string>
